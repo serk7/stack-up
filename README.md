@@ -30,7 +30,7 @@ To use stack-up, you'll need to create a module.json file or name you wish. This
         "name": "Another program",
         "enabled": true,
         "workingDir": "/path/to/another/program/",
-        "command": "node index.js"
+        "command": "cd {{workingDir}} && node index.js"
     }
 ]
 ```
