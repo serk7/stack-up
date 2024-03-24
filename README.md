@@ -17,7 +17,7 @@ Install dependencies:
 npm install
 ```
 ## Configuration
-To use stack-up, you'll need to create a module.json file in the root directory of your project. This file will contain an array of objects, each representing a program you want to run concurrently. Here's an example of json file:
+To use stack-up, you'll need to create a module.json file or name you wish. This file will contain an array of objects, each representing a program you want to run concurrently. Here's an example of json file:
 ```json
 [
     {
@@ -45,7 +45,7 @@ Once you have your module.json file configured, you can run stack-up:
 ```bash
 npm start modules.json
 ```
-This will start all the programs specified in the module.json file concurrently in separate terminal windows using the terminal-kit library.
+This will start all the programs specified in the module.json file concurrently in same terminal windows using the concurrently library.
 ## Author
 - Bubexel
 ## License
