@@ -1,0 +1,8 @@
+[
+    {
+        "name": "My program",
+        "enabled": true,
+        "workingDir": "/home/user/myprogram/",
+        "command": "npm run --prefix {{workingDir}} start"
+    }
+]
