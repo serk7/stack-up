@@ -1,8 +1,9 @@
+#!/usr/bin/env node
 import { terminal } from "terminal-kit"
 import concurrently, { ConcurrentlyResult } from "concurrently"
 import fs from "fs"
 
-const version = "0.1.0"
+const version = process.env.npm_package_version
 
 interface Module {
     name: string,
@@ -26,11 +27,7 @@ terminal.on("key", (name: string) => {
 
 let fileModulesName = "modules.json"
 
-if (process.argv.length > 2) {
-    fileModulesName = process.argv[2]
-}
-
-const modules = JSON.parse(fs.readFileSync(fileModulesName, "utf-8")) as Module[]
+let modules : Array<Module>
 
 function clear() {
     terminal.reset().clear().bold().blue("stack-up").styleReset().dim(` v${version}\n`)
@@ -38,9 +35,23 @@ function clear() {
 
 let workingModules: ConcurrentlyResult
 
-function start() {
+export default function start() {
+    if (process.argv.length > 2) {
+        fileModulesName = process.argv[2]
+    }
+    if (!fs.existsSync(fileModulesName)) {
+        terminal.red("File not found.")
+        terminal.processExit(1)
+        return
+    }
+    modules = JSON.parse(fs.readFileSync(fileModulesName, "utf-8")) as Module[]
+    menu()
+}
+
+function menu() {
     clear()
     terminal("\n")
+   
     const menuOptions = modules.map((module, i) => {
         return `${module.enabled ? "✅" : "❌"} ${module.name}`
     })
@@ -65,7 +76,7 @@ function start() {
         }
         if (response.selectedIndex < menuOptions.length - 2) {
             modules[response.selectedIndex].enabled = !modules[response.selectedIndex].enabled
-            start()
+            menu()
         }
     })
 }

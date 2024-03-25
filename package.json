@@ -1,13 +1,17 @@
 {
-  "name": "stack-up",
-  "version": "1.0.0",
-  "description": "",
-  "main": "src/index.ts",
+  "name": "@fneira/stack-up",
+  "version": "1.0.9",
+  "description": "Stack-up is a simple tool written in JavaScript that allows you to run multiple programs concurrently in the terminal. It is designed to be configurable through a json file, enabling you to specify the programs you want to run, their working directories, and commands.",
+  "main": "dist/cli.js",
+  "bin": {
+    "stack-up": "dist/index.js"
+  },
   "scripts": {
-    "start": "ts-node src/index.ts"
+    "start": "ts-node src/index.ts",
+    "build": "tsc"
   },
   "keywords": [],
-  "author": "",
+  "author": "Bubexel",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.11.30",
