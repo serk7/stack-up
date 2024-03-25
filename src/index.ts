@@ -1,5 +1,5 @@
 import { terminal } from "terminal-kit"
-import concurrently from "concurrently"
+import concurrently, { ConcurrentlyResult } from "concurrently"
 import fs from "fs"
 
 const version = "0.1.0"
@@ -13,6 +13,13 @@ interface Module {
 
 terminal.on("key", (name: string) => {
     if (name === "CTRL_C") {
+        if (workingModules) {
+            workingModules.commands.forEach(command => {
+                terminal("\n").red(`Killing ${command.name}...`)
+                command.kill("SIGINT")
+            })
+        }
+        terminal("\n").red("Exiting...")
         terminal.processExit(0)
     }
 })
@@ -26,8 +33,10 @@ if (process.argv.length > 2) {
 const modules = JSON.parse(fs.readFileSync(fileModulesName, "utf-8")) as Module[]
 
 function clear() {
-    terminal.reset().clear().bold().blue("x3tBot dev starter").styleReset().dim(` v${version}\n`)
+    terminal.reset().clear().bold().blue("stack-up").styleReset().dim(` v${version}\n`)
 }
+
+let workingModules: ConcurrentlyResult
 
 function start() {
     clear()
@@ -43,7 +52,7 @@ function start() {
         }
         if (response.selectedIndex === modules.length) {
             terminal.reset().clear()
-            concurrently(modules.filter(module => module.enabled).map(module => {
+            workingModules = concurrently(modules.filter(module => module.enabled).map(module => {
                 return {
                     command: module.command.replace("{{workingDir}}", module.workingDir),
                     name: module.name
@@ -57,7 +66,6 @@ function start() {
         if (response.selectedIndex < menuOptions.length - 2) {
             modules[response.selectedIndex].enabled = !modules[response.selectedIndex].enabled
             start()
-
         }
     })
 }
