@@ -62,6 +62,6 @@ npm start modules.json
 ```
 This will start all the programs specified in the module.json file concurrently in same terminal windows using the concurrently library.
 ## Author
-- Bubexel
+- Ferran Neira
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
