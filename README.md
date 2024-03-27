@@ -1,6 +1,21 @@
 # Stack-up
 
 Stack-up is a simple tool written in JavaScript that allows you to run multiple programs concurrently in the terminal. It is designed to be configurable through a json file, enabling you to specify the programs you want to run, their working directories, and commands.
+## Using with npx
+You can use stack-up without installing it globally by using npx:
+```bash
+npx @fneira/stack-up modules.json
+```
+This will download the latest version of stack-up and run it with the specified module.json file.
+## Installing globally
+You can also install stack-up globally to use it as a command line tool:
+```bash
+npm install -g @fneira/stack-up
+```
+After installing it globally, you can run stack-up from any directory:
+```bash
+stack-up modules.json
+```
 ## Installation
 
 Before using stack-up, ensure you have Node.js installed on your system. You can download it here.

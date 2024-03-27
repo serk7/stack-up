@@ -3,8 +3,6 @@ import { terminal } from "terminal-kit"
 import concurrently, { ConcurrentlyResult } from "concurrently"
 import fs from "fs"
 
-const version = process.env.npm_package_version
-
 interface Module {
     name: string,
     enabled: boolean
@@ -30,7 +28,7 @@ let fileModulesName = "modules.json"
 let modules : Array<Module>
 
 function clear() {
-    terminal.reset().clear().bold().blue("stack-up").styleReset().dim(` v${version}\n`)
+    terminal.reset().clear().bold().blue("stack-up").styleReset()
 }
 
 let workingModules: ConcurrentlyResult
