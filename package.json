@@ -1,6 +1,6 @@
 {
   "name": "@fneira/stack-up",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Stack-up is a simple tool written in JavaScript that allows you to run multiple programs concurrently in the terminal. It is designed to be configurable through a json file, enabling you to specify the programs you want to run, their working directories, and commands.",
   "main": "dist/cli.js",
   "bin": {
