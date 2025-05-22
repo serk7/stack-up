@@ -14,7 +14,7 @@ npm install -g @fneira/stack-up
 ```
 After installing it globally, you can run stack-up from any directory:
 ```bash
-stack-up modules.json
+stack-up stack-up.json
 ```
 ## Installation
 
@@ -32,7 +32,7 @@ Install dependencies:
 npm install
 ```
 ## Configuration
-To use stack-up, you'll need to create a module.json file or name you wish. This file will contain an array of objects, each representing a program you want to run concurrently. Here's an example of json file:
+To use stack-up, you'll need to create a stack-up.json file or name you wish. This file will contain an array of objects, each representing a program you want to run concurrently. Here's an example of json file:
 ```json
 [
     {
@@ -56,11 +56,24 @@ To use stack-up, you'll need to create a module.json file or name you wish. This
 
 You can add as many objects as needed to run multiple programs concurrently.
 ## Usage
-Once you have your module.json file configured, you can run stack-up:
+Once you have your stack-up.json file configured, you can run stack-up:
 ```bash
-npm start modules.json
+npm start my-stack-up-file.json
 ```
-This will start all the programs specified in the module.json file concurrently in same terminal windows using the concurrently library.
+This will start all the programs specified in the stack-up.json file concurrently in the same terminal window using the concurrently library.
+
+### Running with --direct or -d
+
+You can use the `--direct` or `-d` flag to execute the enabled programs immediately, without showing the interactive menu. This runs all enabled commands from your configuration file right away, skipping any prompts.
+
+Example:
+```bash
+stack-up stack-up.json --direct
+```
+or
+```bash
+stack-up stack-up.json -d
+```
 ## Author
 - Ferran Neira
 ## License
