@@ -23,7 +23,7 @@ terminal.on("key", (name: string) => {
     }
 })
 
-let fileModulesName = "modules.json"
+let fileModulesName = "stack-up.json"
 
 let modules : Array<Module>
 
