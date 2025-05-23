@@ -4,9 +4,9 @@ Stack-up is a simple tool written in JavaScript that allows you to run multiple 
 ## Using with npx
 You can use stack-up without installing it globally by using npx:
 ```bash
-npx @fneira/stack-up modules.json
+npx @fneira/stack-up stack-up.json
 ```
-This will download the latest version of stack-up and run it with the specified module.json file.
+This will download the latest version of stack-up and run it with the specified stack-up.json file.
 ## Installing globally
 You can also install stack-up globally to use it as a command line tool:
 ```bash
@@ -59,6 +59,10 @@ You can add as many objects as needed to run multiple programs concurrently.
 Once you have your stack-up.json file configured, you can run stack-up:
 ```bash
 npm start my-stack-up-file.json
+```
+If your file name is stack-up.json, you can run it without specifying the file name:
+```bash
+stack-up
 ```
 This will start all the programs specified in the stack-up.json file concurrently in the same terminal window using the concurrently library.
 
